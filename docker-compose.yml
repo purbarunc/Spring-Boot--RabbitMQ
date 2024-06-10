@@ -1,4 +1,6 @@
-rabbitmq:
+version: "3"
+services:
+ rabbitmq:
   image: rabbitmq:management
   ports:
     - "5672:5672"
