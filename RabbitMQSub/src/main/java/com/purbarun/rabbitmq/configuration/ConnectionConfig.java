@@ -3,15 +3,13 @@ package com.purbarun.rabbitmq.configuration;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMQConfig {
-	public static final String MYQUEUE = "MyQueue";
+public class ConnectionConfig {
+	public static final String MYQUEUE = "NEW_ORDER";
 
 	@Value("${spring.rabbitmq.host}")
 	private String host;
@@ -37,10 +35,5 @@ public class RabbitMQConfig {
 		connectionFactory.setUsername(username);
 		connectionFactory.setPassword(pwd);
 		return connectionFactory;
-	}
-
-	@Bean
-	public MessageConverter converter() {
-		return new Jackson2JsonMessageConverter();
 	}
 }

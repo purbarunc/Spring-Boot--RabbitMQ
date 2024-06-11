@@ -15,34 +15,37 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-	public static final String MYQUEUE="MyQueue";
-	public static final String EXCHANGE="MyTopicExchange" ;
-	public static final String ROUTING_KEY="topic";
+	private RabbitMQProperties rabbitMQProperties;
+
+	public RabbitMQConfig(RabbitMQProperties rabbitMQProperties) {
+		this.rabbitMQProperties = rabbitMQProperties;
+	}
 
 	@Bean
 	Queue myQueue() {
-		return new Queue(MYQUEUE, true);
+		return new Queue(rabbitMQProperties.getQueue(), true);
 	}
 
 	@Bean
 	Exchange myExchange() {
-		return ExchangeBuilder.topicExchange(EXCHANGE).durable(true).build();
+		return ExchangeBuilder.topicExchange(rabbitMQProperties.getExchange()).durable(true).build();
 	}
 
 	@Bean
 	Binding binding() {
-		return BindingBuilder.bind(myQueue()).to(myExchange()).with(ROUTING_KEY).noargs();
+		return BindingBuilder.bind(myQueue()).to(myExchange()).with(rabbitMQProperties.getRoutingKey()).noargs();
 	}
 
 	@Bean
-	public MessageConverter converter() {
+	MessageConverter converter() {
 		return new Jackson2JsonMessageConverter();
 	}
 
 	@Bean
-	public AmqpTemplate template(ConnectionFactory connectionFactory) {
+	AmqpTemplate template(ConnectionFactory connectionFactory) {
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
 		rabbitTemplate.setMessageConverter(converter());
 		return rabbitTemplate;
 	}
+
 }
