@@ -2,7 +2,7 @@
 
 This is a simple application which demonstrate a message driven loosely coupled application using Rabbit MQ message broker where we are publishing a message to the queue and subsequently receiving the same message without any delay.
 
-** Setting up the Rabbit MQ broker locally: **
+**Setting up the Rabbit MQ broker locally:**
 
 1. Start the Rabbit MQ instance using `docker-compose up`
 2. Launch the Rabbit MQ Management Console available at http://localhost:15672/
