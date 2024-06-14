@@ -1,4 +1,4 @@
-**Spring Boot- RabbitMQ**
+# Spring-Boot-RabbitMQ
 
 This is a simple application which demonstrate a message driven loosely coupled application using Rabbit MQ message broker where we are publishing a message to the queue and subsequently receiving the same message without any delay.
 
