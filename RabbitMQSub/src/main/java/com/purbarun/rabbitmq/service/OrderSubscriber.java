@@ -5,7 +5,7 @@ import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Component;
 
 import com.purbarun.rabbitmq.configuration.ConnectionConfig;
-import com.purbarun.rabbitmq.dto.OrderMessage;
+import com.purbarun.rabbitmq.model.OrderMessage;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,6 +1,5 @@
 package com.purbarun.rabbitmq.configuration;
 
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,11 +21,6 @@ public class ConnectionConfig {
 
 	@Value("${spring.rabbitmq.password}")
 	private String pwd;
-
-	@Bean
-	Queue myQueue() {
-		return new Queue(MYQUEUE, true);
-	}
 
 	@Bean
 	ConnectionFactory connectionFactory() {

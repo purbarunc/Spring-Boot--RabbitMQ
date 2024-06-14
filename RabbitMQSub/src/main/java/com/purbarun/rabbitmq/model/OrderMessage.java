@@ -1,4 +1,4 @@
-package com.purbarun.rabbitmq.dto;
+package com.purbarun.rabbitmq.model;
 
 public record OrderMessage (OrderRequest orderRequest,String messageId) {
 }
