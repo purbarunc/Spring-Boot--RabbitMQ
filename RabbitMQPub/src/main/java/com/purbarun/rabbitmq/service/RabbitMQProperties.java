@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitMQProperties {
 	@Value("${rabbitmq.exchange}")
-	private String exchange = "MyTopicExchange";
+	private String exchange;
 
 	@Value("${rabbitmq.routingKey}")
-	private String routingKey = "topic";
+	private String routingKey;
 	
 	public String getExchange() {
 		return exchange;
